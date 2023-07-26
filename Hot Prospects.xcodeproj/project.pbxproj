@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C38DDA22A710734005F26D3 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7C38DDA12A710734005F26D3 /* CodeScanner */; };
 		7C38DDA42A7119B5005F26D3 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38DDA32A7119B5005F26D3 /* ImageSaver.swift */; };
+		7C38DDA62A712002005F26D3 /* FileManager-DocumentsDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38DDA52A712002005F26D3 /* FileManager-DocumentsDir.swift */; };
 		7CCFC4DF2A701B0100B86B5A /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFC4DE2A701B0100B86B5A /* HotProspectsApp.swift */; };
 		7CCFC4E12A701B0100B86B5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFC4E02A701B0100B86B5A /* ContentView.swift */; };
 		7CCFC4E32A701B0200B86B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFC4E22A701B0200B86B5A /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		7C38DDA32A7119B5005F26D3 /* ImageSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		7C38DDA52A712002005F26D3 /* FileManager-DocumentsDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDir.swift"; sourceTree = "<group>"; };
 		7CCFC4DB2A701B0100B86B5A /* Hot Prospects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hot Prospects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCFC4DE2A701B0100B86B5A /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		7CCFC4E02A701B0100B86B5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				7CCFC4EE2A701C3300B86B5A /* ProspectsView.swift */,
 				7CCFC4F02A701C3C00B86B5A /* MeView.swift */,
 				7C38DDA32A7119B5005F26D3 /* ImageSaver.swift */,
+				7C38DDA52A712002005F26D3 /* FileManager-DocumentsDir.swift */,
 				7CCFC4E22A701B0200B86B5A /* Assets.xcassets */,
 				7CCFC4E42A701B0200B86B5A /* Preview Content */,
 			);
@@ -167,6 +170,7 @@
 				7CCFC4E12A701B0100B86B5A /* ContentView.swift in Sources */,
 				7CCFC4DF2A701B0100B86B5A /* HotProspectsApp.swift in Sources */,
 				7CCFC4F12A701C3C00B86B5A /* MeView.swift in Sources */,
+				7C38DDA62A712002005F26D3 /* FileManager-DocumentsDir.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,11 +16,11 @@ final class Prospect: Identifiable, Codable {
 }
 
 @MainActor final class Prospects: ObservableObject {
-    private static let peopleKey = "people"
+    private static let peopleFile = "people.json"
     @Published private(set) var people: [Prospect]
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: Self.peopleKey) {
+        if let data = try? Data(contentsOf: FileManager.documentsDirectory.appending(component: Self.peopleFile)) {
             if let people = try? JSONDecoder().decode([Prospect].self, from: data) {
                 self.people = people
                 return
@@ -43,7 +43,8 @@ final class Prospect: Identifiable, Codable {
     
     private func save() {
         if let encoded = try? JSONEncoder().encode(people) {
-            UserDefaults.standard.set(encoded, forKey: Self.peopleKey)
+            let peopleFile = FileManager.documentsDirectory.appending(path: Self.peopleFile)
+            try? encoded.write(to: peopleFile, options: [.atomic, .completeFileProtection])
         }
     }
 }
