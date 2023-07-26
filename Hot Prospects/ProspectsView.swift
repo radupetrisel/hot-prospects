@@ -15,6 +15,8 @@ struct ProspectsView: View {
     @EnvironmentObject private var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var isShowingSortingDialog = false
+    @State private var sorting = Sorting.none
     
     private var title: String {
         switch filter {
@@ -38,10 +40,21 @@ struct ProspectsView: View {
         }
     }
     
+    private var sortedProspects: [Prospect] {
+        switch sorting {
+        case .none:
+            return filteredProspects
+        case .name:
+            return filteredProspects.sorted { $0.name < $1.name }
+        case .email:
+            return filteredProspects.sorted { $0.email < $1.email }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
                             Text(prospect.name)
@@ -87,14 +100,30 @@ struct ProspectsView: View {
             }
             .navigationTitle(title)
             .toolbar {
-                Button {
-                    isShowingScanner = true
-                } label: {
-                    Label("Scan", systemImage: "qrcode.viewfinder")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isShowingSortingDialog = true
+                    } label: {
+                        Label("Sort", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingScanner = true
+                    } label: {
+                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    }
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan(result:))
+            }
+            .confirmationDialog("Sort Prospects", isPresented: $isShowingSortingDialog) {
+                Button("Clear sorting") { sorting = .none }
+                Button("Sort by name") { sorting = .name }
+                Button("Sort by email") { sorting = .email }
+                Button("Cancel", role: .cancel) { }
             }
         }
     }
@@ -150,6 +179,10 @@ struct ProspectsView: View {
     
     enum FilterType {
         case none, contacted, uncontacted
+    }
+    
+    enum Sorting {
+        case none, name, email
     }
 }
 
